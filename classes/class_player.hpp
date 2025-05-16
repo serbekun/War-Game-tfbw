@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+#include "../core/class_setting.hpp"
+
 using namespace std;
 
 namespace player_use_classes {
@@ -41,6 +43,12 @@ namespace player_use_classes {
             int bib_id;
             int chisel_id;
             int boots_id;
+
+            player () {
+
+
+                
+            }
 
             void calculate_hungry (const int difficult, int ticks) 
             {
