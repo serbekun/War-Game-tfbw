@@ -12,18 +12,22 @@ class Shower {
 
     public:
 
-        void NowPosition(player_use_classes::Player* player) const {
+        void ShowActionForPlayer() {
+            cout << "1. move bitwin city" << endl;
+            cout << "2. eat food" << endl;
+            cout << "enter nothing skip turn" << endl;
+        }
+
+        void ShowPLayerMainInfo(player_use_classes::Player* player) {
+
             if (!player->position) {
                 cout << "You are not in any city yet!" << endl;
                 return;
             }
             cout << "You are now in '" << player->position->name << "' City" << endl;
-        }
+            cout << "player HP - " << player->hp << "%" << endl;
+            cout << "player hungry - " << player->hungry << "%" << endl;
 
-        void ShowActionForPlayer() {
-            cout << "1. move bitwin city" << endl;
-            cout << "2. eat food" << endl;
-            cout << "enter nothing skip turn" << endl;
         }
 
 };

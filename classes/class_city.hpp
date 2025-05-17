@@ -24,9 +24,19 @@ namespace class_city {
             int wood;
             int metal;
 
+            int wars;
+            int motivation;
+
+            int City_level;
+
             City(const string name) {
                 this->name = name;
             }
+
+            void CityAllSetting() {
+
+
+            } // ````````````````````````````````````````````` not create
 
             void AddNeighbor(City* city) {
                 if (city && city != this && 

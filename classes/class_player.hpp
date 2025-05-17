@@ -118,6 +118,8 @@ namespace player_use_classes {
                 } else {
                     this->food--;
                     this->hungry + 2;
+                    cout << "after eat you have '" << food << "'" << endl;
+                    cout << "hungry took value " << hungry << "%" << endl;
                 }
             }
     };

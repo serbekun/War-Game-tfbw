@@ -9,10 +9,11 @@
 
 using namespace std;
 
-void start_menu() {
+void start_menu(bool test_mod) {
 
     cout << "welcome to tfbw" << endl;
 
+    string player_name;
     int input;
     int difficult;
 
@@ -28,7 +29,9 @@ void start_menu() {
         {
         case 1:
             difficult = GetDifficult();
-            play_menu(difficult);
+            cout << "type your nickname in game : ";
+            getline(cin, player_name);
+            play_menu(difficult, player_name, test_mod);
             break;
         case 2:
             return;

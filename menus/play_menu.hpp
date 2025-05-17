@@ -14,12 +14,11 @@
     
     using namespace std;
     
-    void play_menu (int difficult) {
+    void play_menu (int difficult, string player_name, bool test_mod) {
 
         // init value
-        int *turn_count = new int;
+        int *turn_count = new int(0);
         int *input = new int;
-
 
         // init core classes
         setting::setting_giver* setting_giver = new setting::setting_giver;
@@ -27,11 +26,11 @@
 
 
         // inti play classes
-        player_use_classes::Player* player = new player_use_classes::Player(setting_giver, "unknown", difficult);
+        player_use_classes::Player* player = new player_use_classes::Player(setting_giver, player_name,  difficult);
         
-        int *city_name_num = new int;
-
+        
         // create city
+        int *city_name_num = new int(1);
         class_city::City* city_astralith = new class_city::City(setting_giver->return_city_names(*city_name_num));
         (*city_name_num)++;
         class_city::City* city_test1 = new class_city::City(setting_giver->return_city_names(*city_name_num));
@@ -40,6 +39,15 @@
         (*city_name_num)++;
         class_city::City* city_test3 = new class_city::City(setting_giver->return_city_names(*city_name_num));
         delete(city_name_num);
+        
+        // check city names
+        if (test_mod) {
+            cout << "obj 'city_astralith' name '" << city_astralith->name << "'" << endl; 
+            cout << "obj 'city_test1' name '" << city_test1->name << "'" << endl; 
+            cout << "obj 'city_test2' name '" << city_test2->name << "'" << endl; 
+            cout << "obj 'city_test3' name '" << city_test3->name << "'" << endl; 
+        }
+
 
         // add city neighbors
         
@@ -60,12 +68,12 @@
 
         city_test3->AddNeighbor(city_test2);
 
+        // set player start position
         player->SetPosition(city_astralith);
 
         while (1) {
 
             cout << "==========================================" << endl;
-            shower->NowPosition(player);
             
             shower->ShowActionForPlayer();
             cout << "type option of action what you want to do : ";
