@@ -1,10 +1,13 @@
 {
     "cSpell.words": [
-        "Astralith"
+        "Astralith",
+        "tfbw"
     ],
     "files.associations": {
         "typeinfo": "cpp",
         "iostream": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "new": "cpp",
+        "ostream": "cpp"
     }
 }

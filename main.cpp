@@ -1,9 +1,9 @@
 #include <iostream>
-#include "menus/play_menu.hpp"
+#include "menus/start_menu.hpp"
 
 int main() {
 
-    play_menu();
+    start_menu();
 
     return 0;
     
