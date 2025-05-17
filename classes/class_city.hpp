@@ -31,6 +31,13 @@ namespace class_city {
                 neighbors.push_back(neighbor);
             }
 
+            vector<City*>& GetNeighbors() {
+            return neighbors;
+            }
+
+            std::string GetCityName() const {
+                return name;
+            }
 
     };
 

@@ -64,7 +64,7 @@ namespace player_use_classes {
                 this->hell_metal = 0;
                 this->paradise_metal = 0;
 
-                this->hungry = 100;
+                this->hungry = setting_giver->return_player_start_hungry_num(difficult);
     
                 // armor
                 this->have_weapon_id = -1;
@@ -76,41 +76,43 @@ namespace player_use_classes {
 
             // move mechanic bitwin city
 
-            bool MoveTO(class_city::City* destination) {
-                if (!position) return false;
-                for (class_city::City* neighbor : position->neighbors) {
-                    if (neighbor == destination) {
-                        position = neighbor;
-                        return true;
-                    }
+            void ShowPositionForChoseWhereCanMove() {
+                std::cout << "you now in city: " << position->GetCityName() << endl;
+                std::cout << "neighbors city:\n";
+
+                const auto& neighbors = position->GetNeighbors();
+                for (size_t i = 0; i < neighbors.size(); ++i) {
+                    std::cout << i << ") " << neighbors[i]->GetCityName() << endl;;
                 }
-                return false;
             }
 
-            void ShowPositionForChoseWhereCanMove() const {
-                if (!position) {
-                    cout << "You have no current position!" << endl;
-                    return;
-                }
-                cout << "You are now in '" << position->name << "' City" << endl;
-                cout << "You can move to: ";
-                for (class_city::City* neighbor : position->neighbors) {
-                    cout << neighbor->name << ", ";
-                }
-                cout << "City" << endl;
-            }
+            void MoveTOAnotherCity() {
+                const auto& neighbors = position->GetNeighbors();
+                int choice = -1;
 
-            void NowPosition() const {
-                if (!position) {
-                    cout << "You are not in any city yet!" << endl;
-                    return;
+                std::cout << "type number of city for move: ";
+                std::cin >> choice;
+
+                if (choice >= 0 && static_cast<size_t>(choice) < neighbors.size()) {
+                    position = neighbors[choice];
+                    std::cout << "you move to " << position->GetCityName() << "!" << endl;;
+                } else {
+                    std::cout << "invalid option" << endl;;
                 }
-                cout << "You are now in '" << position->name << "' City" << endl;
             }
 
             void CalculateHungry(setting::setting_giver* setting_giver, int difficult, int ticks) {
                 if (ticks % setting_giver->return_player_hungry_tics_num_value(difficult) == 0) {
                     hungry = max(0, hungry - 2);
+                }
+            }
+
+            void EatFood() {
+                if (food <= 0 ) {
+                    cout << "you can't eat food because you don't have food" << endl;
+                } else {
+                    this->food--;
+                    this->hungry + 2;
                 }
             }
     };

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -17,6 +18,7 @@ int GetDifficult()
     cout << "5. hard" << endl;
     cout << "type number of difficult : ";
     cin >> input;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     return input;
 
 }

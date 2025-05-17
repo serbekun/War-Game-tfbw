@@ -1,4 +1,3 @@
-#include <iostream>
 #include "menus/start_menu.hpp"
 
 int main() {

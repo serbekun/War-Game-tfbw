@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include <limits>
 
 #include "play_menu.hpp"
 #include "../utils/get_difficult.hpp"
@@ -21,6 +22,7 @@ void start_menu() {
         cout << "2. exit" << endl;
         cout << "type number of option : ";
         cin >> input;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         switch (input)
         {
