@@ -27,17 +27,18 @@ namespace class_city {
             int wars;
             int motivation;
 
-            int City_level;
+            int city_level;
+
+            bool city_free;
 
             City(const string name) {
                 this->name = name;
             }
 
             void CityAllSetting() {
-
-
+                
             } // ````````````````````````````````````````````` not create
-
+            
             void AddNeighbor(City* city) {
                 if (city && city != this && 
                     find(neighbors.begin(), neighbors.end(), city) == neighbors.end()) {

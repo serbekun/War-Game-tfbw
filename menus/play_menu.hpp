@@ -48,6 +48,8 @@
             cout << "obj 'city_test3' name '" << city_test3->name << "'" << endl; 
         }
 
+        // set city free station
+
         // add city neighbors
         
         // city astralith neighbors 
