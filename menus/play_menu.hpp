@@ -48,7 +48,6 @@
             cout << "obj 'city_test3' name '" << city_test3->name << "'" << endl; 
         }
 
-
         // add city neighbors
         
         // city astralith neighbors 
@@ -112,6 +111,5 @@
         delete(city_test1);
         delete(city_test2);
         delete(city_test3);
-
-
+        
 }
