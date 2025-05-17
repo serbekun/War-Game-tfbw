@@ -91,8 +91,6 @@
                 break;
             }
 
-
-
             player->CalculateHungry(setting_giver, difficult, *turn_count);
 
             (*turn_count)++;
