@@ -4,86 +4,81 @@
 #include <string>
 
 #include "../core/class_setting.hpp"
+
 class City;
+#include "class_city.hpp"
 
 using namespace std;
 
 namespace player_use_classes {
     
-    class player {
+    class Player {
 
         public:
-                // main variable
-                int hp;
-                string name;
-                float reputation;
-                City* position;
-                
-                // recourse
-                int money;
-                int wood;
-                int stone;
-                int metal;
-                int food;
+            // main variable
+            int hp;
+            string name;
+            float reputation;
+            class_city::City* position;
+            
+            // recourse
+            int money;
+            int wood;
+            int stone;
+            int metal;
+            int food;
 
-                int cobalt;
-                int diamond;
-                int hell_metal;
-                int paradise_metal;
+            int cobalt;
+            int diamond;
+            int hell_metal;
+            int paradise_metal;
 
-                // anather variable
-                int hungry;
+            // anather variable
+            int hungry;
 
-                // enventer
+            // enventer
 
-                int have_weapon_id;
-                
-                // armor
-                int helmet_id;
-                int bib_id;
-                int chisel_id;
-                int boots_id;
+            int have_weapon_id;
+            
+            // armor
+            int helmet_id;
+            int bib_id;
+            int chisel_id;
+            int boots_id;
 
-                player (setting::setting_giver *setting_giver, const string name, const int difficult) {
-                
+            Player(setting::setting_giver *setting_giver, const string name, const int difficult) {
                 // main variable
                 this->hp = 100;
                 this->name = name;
-                float reputation = setting_giver->return_player_start_reputation_num(difficult);
-                City* position;
-                
-                // recourse
-                int money;
-                int wood;
-                int stone;
-                int metal;
-                int food;
+                this->reputation = setting_giver->return_player_start_reputation_num(difficult);
+                this->position = nullptr;
 
-                int cobalt;
-                int diamond;
-                int hell_metal;
-                int paradise_metal;
+                // resource
+                this->money = 0;
+                this->wood = 0;
+                this->stone = 0;
+                this->metal = 0;
+                this->food = 0;
+                this->cobalt = 0;
+                this->diamond = 0;
+                this->hell_metal = 0;
+                this->paradise_metal = 0;
 
-                // anather variable
-                int hungry;
-
-                // enventer
-
-                int have_weapon_id;
-                
+                this->hungry = 100;
+    
                 // armor
-                int helmet_id;
-                int bib_id;
-                int chisel_id;
-                int boots_id;
-
-                
+                this->have_weapon_id = -1;
+                this->helmet_id = -1;
+                this->bib_id = -1;
+                this->chisel_id = -1;
+                this->boots_id = -1;
             }
 
             // move mechanic bitwin city
 
-            bool MoveTO(City* destination) {
-                for (City* neighbor : position->neighbors) {
+            bool MoveTO(class_city::City* destination) {
+                if (!position) return false;
+                for (class_city::City* neighbor : position->neighbors) {
                     if (neighbor == destination) {
                         position = neighbor;
                         return true;
@@ -93,28 +88,30 @@ namespace player_use_classes {
             }
 
             void ShowPositionForChoseWhereCanMove() const {
-                cout << "you now in '" << position->name << "' City" << endl;
-                cout << "you can move to '";
-                for (City* neighbor : position->neighbor) {
-                    cout << neighbor->name << ",";
+                if (!position) {
+                    cout << "You have no current position!" << endl;
+                    return;
                 }
-                cout << "' City" << endl;
+                cout << "You are now in '" << position->name << "' City" << endl;
+                cout << "You can move to: ";
+                for (class_city::City* neighbor : position->neighbors) {
+                    cout << neighbor->name << ", ";
+                }
+                cout << "City" << endl;
             }
 
             void NowPosition() const {
-                cout << "you now in '" << position->name << "' City" << endl;
+                if (!position) {
+                    cout << "You are not in any city yet!" << endl;
+                    return;
+                }
+                cout << "You are now in '" << position->name << "' City" << endl;
             }
 
-            void CalculateHungry (setting::setting_giver* setting_giver, int difficult, int ticks) 
-            {
-
-                    if (ticks % setting_giver->return_player_hungry_tics_num_value(difficult) == 0) {
-                        hungry -= 2;
-                    }
-            
+            void CalculateHungry(setting::setting_giver* setting_giver, int difficult, int ticks) {
+                if (ticks % setting_giver->return_player_hungry_tics_num_value(difficult) == 0) {
+                    hungry = max(0, hungry - 2);
+                }
             }
-
-
     };
-
 }

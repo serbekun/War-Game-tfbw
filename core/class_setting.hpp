@@ -1,5 +1,10 @@
 #pragma once
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
 namespace setting {
 
     class setting_giver {
@@ -7,7 +12,7 @@ namespace setting {
         private:
             const int player_hungry_tics_num[5] = {25, 20, 15, 10, 10};
             const int player_start_hungry_num[5] = {100, 90, 70, 50, 20};
-            const int player_start_reputation_num[5] = {30.0, 25.0, 15.0, 5.0, 1.0};
+            const double player_start_reputation_num[5] = {30.0, 25.0, 15.0, 5.0, 1.0};
             
             const string city_names[4] = {"astralith", "test1", "test2", "test3"}; 
 

@@ -17,7 +17,7 @@
         setting::setting_giver* setting_giver = new setting::setting_giver;
 
 
-        player_use_classes::player player();
+        player_use_classes::Player player();
         
         int *city_name_num = new int;
 

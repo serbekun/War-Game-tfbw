@@ -3,6 +3,8 @@
         "Astralith"
     ],
     "files.associations": {
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "iostream": "cpp",
+        "string": "cpp"
     }
 }

@@ -4,7 +4,9 @@
 #include <string>
 #include <vector>
 
-class PLayer;
+class Player;
+#include "class_player.hpp"
+
 
 using namespace std;
 
