@@ -101,6 +101,11 @@ namespace player_use_classes {
                 }
             }
 
+            void SetPosition(class_city::City* new_pos) {
+                position = new_pos;
+            }
+
+
             void CalculateHungry(setting::setting_giver* setting_giver, int difficult, int ticks) {
                 if (ticks % setting_giver->return_player_hungry_tics_num_value(difficult) == 0) {
                     hungry = max(0, hungry - 2);

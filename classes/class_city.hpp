@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 class Player;
 #include "class_player.hpp"
@@ -27,8 +28,11 @@ namespace class_city {
                 this->name = name;
             }
 
-            void AddNeighbor(City* neighbor) {
-                neighbors.push_back(neighbor);
+            void AddNeighbor(City* city) {
+                if (city && city != this && 
+                    find(neighbors.begin(), neighbors.end(), city) == neighbors.end()) {
+                    neighbors.push_back(city);
+                }
             }
 
             vector<City*>& GetNeighbors() {

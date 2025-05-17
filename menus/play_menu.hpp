@@ -60,9 +60,13 @@
 
         city_test3->AddNeighbor(city_test2);
 
+        player->SetPosition(city_astralith);
 
         while (1) {
 
+            cout << "==========================================" << endl;
+            shower->NowPosition(player);
+            
             shower->ShowActionForPlayer();
             cout << "type option of action what you want to do : ";
             cin >> *input;
