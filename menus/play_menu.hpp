@@ -7,6 +7,7 @@
     // include core
     #include "../core/class_setting.hpp"
     #include "../core/class_shower.hpp"
+    #include "../utils/class_rng.hpp"
 
     // include play class
     #include "../classes/class_player.hpp"
@@ -23,50 +24,27 @@
         // init core classes
         setting::setting_giver* setting_giver = new setting::setting_giver;
         core::Shower* shower = new core::Shower;
+        utils::rng* rng = new utils::rng;
 
 
         // inti play classes
         player_use_classes::Player* player = new player_use_classes::Player(setting_giver, player_name,  difficult);
         
         // create city
+        int *city_id = new int(1);
         int *city_name_num = new int(1);
-        class_city::City* city_astralith = new class_city::City(setting_giver->return_city_names(*city_name_num));
+        class_city::City* city_astralith = new class_city::City(setting_giver->return_city_names(*city_name_num), *city_id);
+        (*city_id)++;
         (*city_name_num)++;
-        class_city::City* city_test1 = new class_city::City(setting_giver->return_city_names(*city_name_num));
-        (*city_name_num)++;
-        class_city::City* city_test2 = new class_city::City(setting_giver->return_city_names(*city_name_num));
-        (*city_name_num)++;
-        class_city::City* city_test3 = new class_city::City(setting_giver->return_city_names(*city_name_num));
-        delete(city_name_num);
+
         
-        // check city names
-        if (test_mod) {
-            cout << "obj 'city_astralith' name '" << city_astralith->name << "'" << endl; 
-            cout << "obj 'city_test1' name '" << city_test1->name << "'" << endl; 
-            cout << "obj 'city_test2' name '" << city_test2->name << "'" << endl; 
-            cout << "obj 'city_test3' name '" << city_test3->name << "'" << endl; 
-        }
 
         // set city free station
 
         // add city neighbors
-        
-        // city astralith neighbors 
-        city_astralith->AddNeighbor(city_test1);
-        city_astralith->AddNeighbor(city_test2);
-        
-        // city test1 neighbors
-        city_test1->AddNeighbor(city_astralith);
-        city_test1->AddNeighbor(city_test2);
-        
-        // city test2 neighbors
-        city_test2->AddNeighbor(city_astralith);
-        city_test2->AddNeighbor(city_test1);
-        city_test2->AddNeighbor(city_test3);
 
-        // city test3 neighbors
 
-        city_test3->AddNeighbor(city_test2);
+
 
         // set player start position
         player->SetPosition(city_astralith);
@@ -106,8 +84,6 @@
 
         // delete city
         delete(city_astralith);
-        delete(city_test1);
-        delete(city_test2);
-        delete(city_test3);
+
         
 }

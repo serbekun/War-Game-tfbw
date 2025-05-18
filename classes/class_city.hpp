@@ -5,6 +5,10 @@
 #include <vector>
 #include <algorithm>
 
+#include "../core/class_setting.hpp"
+
+#include "../utils/class_rng.hpp"
+
 class Player;
 #include "class_player.hpp"
 
@@ -14,7 +18,7 @@ namespace class_city {
 
     class City {
 
-        public:
+        private:
 
             int id;
             string name;
@@ -24,21 +28,42 @@ namespace class_city {
             int wood;
             int metal;
 
-            int warrios;
+            // people
+            int population;
+            int farmers;
+            int scientists;
+            int warriors;
+            int free_people;
+
             int motivation;
 
             int city_level;
 
             bool city_free;
 
-            City(const string name  ) {
+        public:
+
+            City(const string name, int id) {
                 this->name = name;
                 this->id = id;
-            }
-
-            void CityAllSetting() {
                 
-            } // ````````````````````````````````````````````` not create
+                this->money;
+                this-> wood;
+                this-> metal;
+
+                // people
+                this->population;
+                this->farmers;
+                this->scientists;
+                this->warriors;
+                this->free_people;
+
+                this->motivation;
+
+                this->city_level;
+
+                this->city_free;
+            }
             
             void AddNeighbor(City* city) {
                 if (city && city != this && 
