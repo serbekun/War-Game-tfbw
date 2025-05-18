@@ -8,7 +8,6 @@
 class Player;
 #include "class_player.hpp"
 
-
 using namespace std;
 
 namespace class_city {
@@ -17,6 +16,7 @@ namespace class_city {
 
         public:
 
+            int id;
             string name;
             vector<City*> neighbors;
 
@@ -24,15 +24,16 @@ namespace class_city {
             int wood;
             int metal;
 
-            int wars;
+            int warrios;
             int motivation;
 
             int city_level;
 
             bool city_free;
 
-            City(const string name) {
+            City(const string name  ) {
                 this->name = name;
+                this->id = id;
             }
 
             void CityAllSetting() {

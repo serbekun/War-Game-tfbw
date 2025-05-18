@@ -20,13 +20,13 @@ class Shower {
 
         void ShowPLayerMainInfo(player_use_classes::Player* player) {
 
-            if (!player->position) {
+            if (!player->GetPosition()) {
                 cout << "You are not in any city yet!" << endl;
                 return;
             }
-            cout << "You are now in '" << player->position->name << "' City" << endl;
-            cout << "player HP - " << player->hp << "%" << endl;
-            cout << "player hungry - " << player->hungry << "%" << endl;
+            cout << "You are now in '" << player->GetPosition()->name << "' City" << endl;
+            cout << "player HP - " << player->GetHp() << "%" << endl;
+            cout << "player hungry - " << player->GetHungry() << "%" << endl;
 
         }
 

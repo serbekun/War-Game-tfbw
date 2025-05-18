@@ -17,8 +17,8 @@
     void play_menu (int difficult, string player_name, bool test_mod) {
 
         // init value
-        int *turn_count = new int(0);
-        int *input = new int;
+        int turn_count;
+        int input;
 
         // init core classes
         setting::setting_giver* setting_giver = new setting::setting_giver;
@@ -27,7 +27,6 @@
 
         // inti play classes
         player_use_classes::Player* player = new player_use_classes::Player(setting_giver, player_name,  difficult);
-        
         
         // create city
         int *city_name_num = new int(1);
@@ -78,10 +77,10 @@
             
             shower->ShowActionForPlayer();
             cout << "type option of action what you want to do : ";
-            cin >> *input;
+            cin >> input;
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-            switch (*input)
+            switch (input)
             {
             case 1:
                 player->ShowPositionForChoseWhereCanMove();
@@ -92,13 +91,10 @@
                 break;
             }
 
-            player->CalculateHungry(setting_giver, difficult, *turn_count);
+            player->CalculateHungry(setting_giver, difficult, turn_count);
 
-            (*turn_count)++;
+            turn_count++;
         }
-
-        // clear variable
-        delete(turn_count);
 
         // free all classes
 
