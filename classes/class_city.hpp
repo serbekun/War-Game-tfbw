@@ -34,10 +34,7 @@ namespace class_city {
 
             // people
             int population;
-            int farmers;
-            int scientists;
             int warriors;
-            int free_people;
 
             int motivation;
 
@@ -76,32 +73,32 @@ namespace class_city {
                 this-> food = food;
 
                 // people
-                this->population;
-                this->farmers;
-                this->scientists;
-                this->warriors;
-                this->free_people;
+                
+                int population = setting_giver->return_city_start_population();
+                population += rng->
+                GetRandomIntWithDiapason(setting_giver->return_city_start_money_diapason(0),
+                setting_giver->return_city_start_population_diapason(1));
+
+                this->population = population;
+                this->warriors; // TODO TODO TODO
 
                 this->motivation;
 
                 this->city_level;
 
-                this->city_free;
+                //this->city_free;
             }
 
-             // getters
+            // getters
             int GetMoney() const { return money; }
             int GetWood() const { return wood; }
             int GetMetal() const { return metal; }
             int GetFood() const { return food; }
             int GetPopulation() const { return population; }
-            int GetFarmers() const { return farmers; }
-            int GetScientists() const { return scientists; }
             int GetWarriors() const { return warriors; }
-            int GetFreePeople() const { return free_people; }
             int GetMotivation() const { return motivation; }
             int GetCityLevel() const { return city_level; }
-            bool IsCityFree() const { return city_free; }
+            bool GetCityFree() const { return city_free; }
 
             // setters
             void SetMoney(int value) { money = value; }
@@ -109,10 +106,7 @@ namespace class_city {
             void SetMetal(int value) { metal = value; }
             void SetFood(int value) { food = value; }
             void SetPopulation(int value) { population = value; }
-            void SetFarmers(int value) { farmers = value; }
-            void SetScientists(int value) { scientists = value; }
             void SetWarriors(int value) { warriors = value; }
-            void SetFreePeople(int value) { free_people = value; }
             void SetMotivation(int value) { motivation = value; }
             void SetCityLevel(int value) { city_level = value; }
             void SetCityFree(bool state) { city_free = state; }
@@ -123,10 +117,7 @@ namespace class_city {
             void AddMetal(int value) { metal += value; }
             void AddFood(int value) { food += value; }
             void AddPopulation(int value) { population += value; }
-            void AddFarmers(int value) { farmers += value; }
-            void AddScientists(int value) { scientists += value; }
             void AddWarriors(int value) { warriors += value; }
-            void AddFreePeople(int value) { free_people += value; }
             void AddMotivation(int value) { motivation += value; }
             void AddCityLevel(int value) { city_level += value; }
 

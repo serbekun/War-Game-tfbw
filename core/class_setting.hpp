@@ -30,6 +30,9 @@ namespace setting {
             
             const int city_start_resource[5] = {1000, 800, 600, 400, 100};
             const int city_start_resource_diapason[2] = {-80, +80};
+
+            const int city_start_population = 25000;
+            const int city_start_population_diapason[2] ={-5000, 5000};
             
         public:
 
@@ -104,6 +107,16 @@ namespace setting {
                 {
                 case 0: return city_start_resource_diapason[0];
                 default: return city_start_resource_diapason[1];
+                }
+            }
+
+            int return_city_start_population() {return city_start_population;}
+
+            int return_city_start_population_diapason(int num) 
+            {
+                switch (num) {
+                case 0: return city_start_population_diapason[0];
+                default: return city_start_population_diapason[1];
                 }
             }
 

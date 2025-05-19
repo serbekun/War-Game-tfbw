@@ -38,11 +38,5 @@ void start_menu(bool test_mod) {
         default:
             break;
         }
-
-
-
     }
-
-
-
 }

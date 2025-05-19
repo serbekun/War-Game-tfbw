@@ -18,7 +18,7 @@
     void play_menu (int difficult, string player_name, bool test_mod) {
 
         // init value
-        int turn_count;
+        int turn_count = 0;
         int input;
 
         // init core classes
@@ -75,10 +75,12 @@
         while (1) 
         {
 
-            cout << "==========================================" << endl;
+            cout << "==========="<< turn_count << "============" << endl;
             
             shower->ShowPLayerMainInfo(player);
             shower->ShowActionForPlayer();
+            
+            cout << "==========================================" << endl;
 
             cout << "type option of action what you want to do : ";
             if (cin.peek() == '\n') {
