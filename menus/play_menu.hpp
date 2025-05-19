@@ -77,7 +77,7 @@
 
             cout << "==========================================" << endl;
             
-            shower->ShowPLayerMainInfo(player, );
+            shower->ShowPLayerMainInfo(player);
             shower->ShowActionForPlayer();
 
             cout << "type option of action what you want to do : ";
