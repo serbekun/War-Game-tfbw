@@ -25,7 +25,12 @@ namespace setting {
             "beregrod", "nolodar", "enrich", "ominda"
             };
 
-            const int city_start_money [5] = {60000, 50000, 30000, 20000, 10000};
+            const int city_start_money[5] = {60000, 50000, 30000, 20000, 10000};
+            const int city_start_money_diapason[2] = {-10000, 10000};
+            
+            const int city_start_resource[5] = {1000, 800, 600, 400, 100};
+            const int city_start_resource_diapason[2] = {-80, +80};
+            
         public:
 
             string return_city_names(int const num_city_name) 
@@ -59,10 +64,48 @@ namespace setting {
                 }
             }
 
-            int return_city_start_money() {
-
+            int return_city_start_money(const int difficult) 
+            {
+                switch (difficult) {
+                    case 1: return city_start_money[0];
+                    case 2: return city_start_money[1];
+                    case 3: return city_start_money[2];
+                    case 4: return city_start_money[3];
+                    case 5: return city_start_money[4];
+                    default: return city_start_money[2];
+                }
             }
 
+            int return_city_start_money_diapason(int num /*0 = minus diapason, default = plus diapason */) 
+            {
+                switch (num)
+                {
+                case 0: return city_start_money_diapason[0];
+                default: return city_start_money_diapason[1];                    
+                }
+            }
+
+            int return_city_start_resource(int difficult) 
+            {
+                switch (difficult)
+                {
+                case 1: return city_start_resource[0];
+                case 2: return city_start_resource[1];
+                case 3: return city_start_resource[2];
+                case 4: return city_start_resource[3];
+                case 5: return city_start_resource[4];
+                default: return city_start_resource[2];
+                }
+            }
+
+            int return_city_start_resource_diapason(int num /*0 = minus diapason, default = plus diapason */) 
+            {
+                switch (num)
+                {
+                case 0: return city_start_resource_diapason[0];
+                default: return city_start_resource_diapason[1];
+                }
+            }
 
             int return_player_hungry_tics_num_value(int const difficult) 
             {

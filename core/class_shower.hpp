@@ -24,7 +24,7 @@ class Shower {
                 cout << "You are not in any city yet!" << endl;
                 return;
             }
-            cout << "You are now in '" << player->GetPosition()->name << "' City" << endl;
+            cout << "You are now in '" << player->GetPosition()->GetCityName() << "' City" << endl;
             cout << "player HP - " << player->GetHp() << "%" << endl;
             cout << "player hungry - " << player->GetHungry() << "%" << endl;
 

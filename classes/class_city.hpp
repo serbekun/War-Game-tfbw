@@ -19,14 +19,18 @@ namespace class_city {
     class City {
 
         private:
-
+        
             int id;
             string name;
             vector<City*> neighbors;
 
+            int bases_id[2];
+
             int money;
+            
             int wood;
             int metal;
+            int food;
 
             // people
             int population;
@@ -43,13 +47,33 @@ namespace class_city {
 
         public:
 
-            City(const string name, int id) {
+            City(const int difficult, const string name, int id, utils::rng *rng, setting::setting_giver *setting_giver) {
                 this->name = name;
                 this->id = id;
                 
-                this->money;
-                this-> wood;
-                this-> metal;
+                int money = setting_giver->return_city_start_money(difficult);
+                int money_change_diapason = rng->
+                GetRandomIntWithDiapason(setting_giver->return_city_start_money_diapason(0),
+                setting_giver->return_city_start_money_diapason(1));
+                
+                this->money = money += money_change_diapason;
+                
+                int wood = setting_giver->return_city_start_resource(difficult);
+                wood += rng->
+                GetRandomIntWithDiapason(setting_giver->return_city_start_resource_diapason(0),
+                setting_giver->return_city_start_resource_diapason(1));
+                int metal = setting_giver->return_city_start_resource(difficult);
+                metal += rng->
+                GetRandomIntWithDiapason(setting_giver->return_city_start_resource_diapason(0),
+                setting_giver->return_city_start_resource_diapason(1));
+                int food = setting_giver->return_city_start_resource(difficult);
+                food += rng->
+                GetRandomIntWithDiapason(setting_giver->return_city_start_resource_diapason(0),
+                setting_giver->return_city_start_resource_diapason(1));
+
+                this-> wood = wood;
+                this-> metal = metal;
+                this-> food = food;
 
                 // people
                 this->population;
@@ -64,7 +88,50 @@ namespace class_city {
 
                 this->city_free;
             }
-            
+
+             // getters
+            int GetMoney() const { return money; }
+            int GetWood() const { return wood; }
+            int GetMetal() const { return metal; }
+            int GetFood() const { return food; }
+            int GetPopulation() const { return population; }
+            int GetFarmers() const { return farmers; }
+            int GetScientists() const { return scientists; }
+            int GetWarriors() const { return warriors; }
+            int GetFreePeople() const { return free_people; }
+            int GetMotivation() const { return motivation; }
+            int GetCityLevel() const { return city_level; }
+            bool IsCityFree() const { return city_free; }
+
+            // setters
+            void SetMoney(int value) { money = value; }
+            void SetWood(int value) { wood = value; }
+            void SetMetal(int value) { metal = value; }
+            void SetFood(int value) { food = value; }
+            void SetPopulation(int value) { population = value; }
+            void SetFarmers(int value) { farmers = value; }
+            void SetScientists(int value) { scientists = value; }
+            void SetWarriors(int value) { warriors = value; }
+            void SetFreePeople(int value) { free_people = value; }
+            void SetMotivation(int value) { motivation = value; }
+            void SetCityLevel(int value) { city_level = value; }
+            void SetCityFree(bool state) { city_free = state; }
+
+            // adder
+            void AddMoney(int value) { money += value; }
+            void AddWood(int value) { wood += value; }
+            void AddMetal(int value) { metal += value; }
+            void AddFood(int value) { food += value; }
+            void AddPopulation(int value) { population += value; }
+            void AddFarmers(int value) { farmers += value; }
+            void AddScientists(int value) { scientists += value; }
+            void AddWarriors(int value) { warriors += value; }
+            void AddFreePeople(int value) { free_people += value; }
+            void AddMotivation(int value) { motivation += value; }
+            void AddCityLevel(int value) { city_level += value; }
+
+            // main funk
+
             void AddNeighbor(City* city) {
                 if (city && city != this && 
                     find(neighbors.begin(), neighbors.end(), city) == neighbors.end()) {

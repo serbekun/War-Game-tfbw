@@ -74,7 +74,7 @@ namespace player_use_classes {
                 this->wood = 0;
                 this->stone = 0;
                 this->metal = 0;
-                this->food = 0;
+                this->food = 10;
                 this->cobalt = 0;
                 this->diamond = 0;
                 this->hell_metal = 0;
@@ -128,7 +128,7 @@ namespace player_use_classes {
             void SetHp(int new_hp) { hp = new_hp; }
             void SetName(const string& new_name) { name = new_name; }
             void SetReputation(float new_reputation) { reputation = new_reputation; }
-            void SetPosition(class_city::City* new_position) { position = new_position; }
+            //void SetPosition(class_city::City* new_position) { position = new_position; }
 
             void SetMoney(int new_money) { money = new_money; }
             void SetWood(int new_wood) { wood = new_wood; }
@@ -229,7 +229,7 @@ namespace player_use_classes {
                     cout << "you can't eat food because you don't have food" << endl;
                 } else {
                     this->food--;
-                    this->hungry + 2;
+                    this->hungry += 2;
                     cout << "after eat you have '" << food << "'" << endl;
                     cout << "hungry took value " << hungry << "%" << endl;
                 }
