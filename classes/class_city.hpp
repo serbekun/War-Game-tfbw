@@ -80,13 +80,13 @@ namespace class_city {
                 setting_giver->return_city_start_population_diapason(1));
 
                 this->population = population;
-                this->warriors; // TODO TODO TODO
+                this->warriors; // TODO
 
                 this->motivation;
 
                 this->city_level;
 
-                //this->city_free;
+                this->city_free;
             }
 
             // getters
