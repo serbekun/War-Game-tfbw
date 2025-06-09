@@ -21,12 +21,11 @@ void play_menu (int difficult, string player_name, bool test_mod) {
     int turn_count = 0;
     int input;
 
-     // init core classes 
+    // init core classes 
     setting::setting_giver* setting_giver = new setting::setting_giver;
     core::Shower* shower = new core::Shower;
     utils::rng* rng = new utils::rng;
-
-
+    
     // inti play classes
     player_use_classes::Player* player = new player_use_classes::Player(setting_giver, player_name,  difficult);
         
@@ -59,7 +58,8 @@ void play_menu (int difficult, string player_name, bool test_mod) {
     delete(city_name_num);
 
     // set city free station
-
+    // TODO
+    
     // add city neighbors
     city_astralith->AddNeighbor(city_postblavn);
 
@@ -104,6 +104,7 @@ void play_menu (int difficult, string player_name, bool test_mod) {
             }
         }
 
+        // game mechaniks start
         player->CalculateHungry(setting_giver, difficult, turn_count);
 
         turn_count++;
