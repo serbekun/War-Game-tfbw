@@ -16,6 +16,10 @@ namespace setting {
             const int player_start_hungry_num[5] = {100, 90, 70, 50, 20};
             const double player_start_reputation_num[5] = {30.0, 25.0, 15.0, 5.0, 1.0};
             
+            // hungry mechanics
+            const int player_hungry_num_when_start_health[5] = {50, 60, 70, 80, 90};
+            const int player_full_hungry_hp_add[5] = {10, 8, 6, 4, 2};
+
             // city
             const string city_names[24] = 
             {"astralith", "postblavn", "kinland", "aeliris", "ventaria",
@@ -155,6 +159,36 @@ namespace setting {
                 default: return player_start_reputation_num[2];  
                 }
             }
+
+            /* player mechanics setting */
+
+            int return_player_hungry_num_when_start_health(int const difficult)
+            {
+                switch (difficult)
+                {
+                case 1: return player_hungry_num_when_start_health[0];
+                case 2: return player_hungry_num_when_start_health[1];
+                case 3: return player_hungry_num_when_start_health[2];
+                case 4: return player_hungry_num_when_start_health[3];
+                case 5: return player_hungry_num_when_start_health[4];
+                default: return player_hungry_num_when_start_health[2];
+                }
+            }
+
+            int return_player_full_hungry_hp_add(int const difficult)
+            {
+                switch (difficult) 
+                {
+                    case 1: return player_full_hungry_hp_add[0];
+                    case 2: return player_full_hungry_hp_add[1];
+                    case 3: return player_full_hungry_hp_add[2];
+                    case 4: return player_full_hungry_hp_add[3];
+                    case 5: return player_full_hungry_hp_add[4];
+                    default: return player_full_hungry_hp_add[5];
+                }
+
+            }
+
     };
 
 }

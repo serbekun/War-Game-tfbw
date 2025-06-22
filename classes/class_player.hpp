@@ -64,7 +64,7 @@ namespace player_use_classes {
 
             Player(setting::setting_giver *setting_giver, const string name, const int difficult) {
                 // main variable
-                this->hp = 100;
+                this->hp = 20;
                 this->name = name;
                 this->reputation = setting_giver->return_player_start_reputation_num(difficult);
                 this->position = nullptr;
@@ -74,7 +74,7 @@ namespace player_use_classes {
                 this->wood = 0;
                 this->stone = 0;
                 this->metal = 0;
-                this->food = 10;
+                this->food = 1000;
                 this->cobalt = 0;
                 this->diamond = 0;
                 this->hell_metal = 0;
