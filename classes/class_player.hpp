@@ -199,18 +199,38 @@ namespace player_use_classes {
                 }
             }
 
-            void MoveTOAnotherCity() {
+            void MoveToAnotherCity() {
                 const auto& neighbors = position->GetNeighbors();
                 int choice = -1;
 
-                std::cout << "type number of city for move: ";
-                std::cin >> choice;
+                while(true) {
+                    std::cout << "\nChoose a city to move to (0-" << neighbors.size()-1 
+                            << "), or -1 to cancel: ";
+                    
+                    // Check if the input is valid
+                    if(!(std::cin >> choice)) {
+                        std::cin.clear(); // Reset error flag
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        std::cout << "Error! Please enter a number.\n";
+                        continue;
+                    }
+                    
+                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-                if (choice >= 0 && static_cast<size_t>(choice) < neighbors.size()) {
-                    position = neighbors[choice];
-                    std::cout << "you move to " << position->GetCityName() << "!" << endl;;
-                } else {
-                    std::cout << "invalid option" << endl;;
+                    // Check for cancellation
+                    if(choice == -1) {
+                        std::cout << "Movement canceled.\n";
+                        return;
+                    }
+
+                    // Check if the choice is valid
+                    if(choice >= 0 && static_cast<size_t>(choice) < neighbors.size()) {
+                        position = neighbors[choice];
+                        std::cout << "You have moved to " << position->GetCityName() << "!\n";
+                        return;
+                    }
+
+                    std::cout << "Invalid option! Please try again.\n";
                 }
             }
 

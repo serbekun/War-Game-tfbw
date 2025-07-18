@@ -22,6 +22,7 @@ void play_menu (int difficult, string player_name, bool test_mod) {
     // init value
     int turn_count = 0;
     int input;
+    bool exit = 1;
 
     // init core classes 
     setting::setting_giver* setting_giver = new setting::setting_giver;
@@ -76,8 +77,13 @@ void play_menu (int difficult, string player_name, bool test_mod) {
     // set player start position
     player->SetPosition(city_astralith);
 
-    while (1) 
+    while (exit) 
     {
+
+
+
+        // game mechanics
+        Player_hp_calculation->CalculatePlayerHpHungryMechanic(player, difficult, setting_giver);
 
         cout << "==========="<< turn_count << "============" << endl;
             
@@ -92,7 +98,12 @@ void play_menu (int difficult, string player_name, bool test_mod) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         } else {
-            cin >> input;
+            if (!(cin >> input)) {  // Check if input failed
+                cin.clear();  // Clear error state
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');  // Clear buffer
+                cout << "Invalid input. Please enter a number." << endl;
+                continue;  // Skip rest of loop iteration
+            }
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
             switch (input) {
@@ -101,11 +112,13 @@ void play_menu (int difficult, string player_name, bool test_mod) {
                     return;
                 case 1:
                     player->ShowPositionForChoseWhereCanMove();
-                    player->MoveTOAnotherCity();
+                    player->MoveToAnotherCity();
                     break;
                 case 2:
                     player->EatFood();
                     break;
+                case -1:
+                    exit = 0;
                 default:
                     break;
             }
@@ -114,7 +127,6 @@ void play_menu (int difficult, string player_name, bool test_mod) {
         // game mechanics start
         player->CalculateHungry(setting_giver, difficult, turn_count);
         Limit_cater->CatPlayerLimits(player);
-        Player_hp_calculation->CalculatePlayerHpHungryMechanic(player, difficult, setting_giver);
 
         turn_count++;
     }
